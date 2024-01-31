@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+      background: #f5f5f5 url('https://media2.giphy.com/media/1qYJt2078KC9vVyu4p/giphy.gif');
+            background-size: cover;
+        }
+    }
+
+    .course.highlighted {
+  background-color: #00ffaa60;
+  border-color: #00ffd5;
+}
+
+.course.highlighted h2 {
+  color: #0076fd5d;
+}
+
+header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+
+    nav {
+            background-color: #555;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+
+
+    .section {
+            margin: 20px;
+            background-color: #fff;
+            padding: 35px;
+            border-radius: 50px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s;    }
+
+
+        .fade-out {
+            opacity: 0.2; 
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+    h2 {
+        color: #333;
+        margin: 35px;
+        margin-left: 25px;
+    }
+
+    h6{
+    align-content: center.footer {
+            padding: 20px;
+            text-align: center;
+        }
+      }
+
+    h7{
+    align-content: center.footer {
+            padding: 50px;
+            text-align center;
+            min-width: 50px;
+        }
+      }
+    
+      a{
+        color: #333;
+      }
+      .footer2 h6 {
+  align-content: center;
+}
+
+.footer2 h7{
+  align-content: center;
+}
+.footer2 {
+  background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer2 img {
+  max-width: 500px;
+  max-height: 500px;
+  height: auto;
+}
+
+.footer {
+  background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer img {
+  max-width: 200px;
+  max-height: 200px;
+  height: auto;
+}
+
+
+    p {
+  margin: 15px;
+  margin-left: 25px;
+  color: #666;
+  font-size: large;
+}
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 5px;
+    }
+
+    th{
+      min-height: 140px;
+      max-height: 200px;
+      min-width: 140px;
+      max-width: 200px;
+      font-size: larger;
+    }
+
+</style>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      function handleScroll() {
+          document.querySelectorAll('.section').forEach(function(section) {
+                 if (isElementInViewport(section)) {
+                  section.classList.remove('fade-out');            } else {
+                  section.classList.add('fade-out');         }
+          });
+      }
+
+          function isElementInViewport(el) {
+          var rect = el.getBoundingClientRect();
+          return (
+              rect.top >= 0 &&
+              rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+          );
+      }
+
+         window.addEventListener('scroll', handleScroll);
+
+       handleScroll();
+  });
+</script>
+
+<script>
+  function highlightCurrentCourse() {
+  const today = new Date();
+  const currentTime = today.getHours() * 100 + today.getMinutes();
+
+  const courses = document.querySelectorAll(".course");
+
+  courses.forEach((course) => {
+    const courseTime = getCourseTime(course);
+    if (courseTime) {
+      const [start, end] = courseTime
+        .split("-")
+        .map((time) => parseInt(time.replace(":", ""), 10));
+
+      if (currentTime >= start && currentTime <= end) {
+        course.classList.add("highlighted");
+      } else {
+        course.classList.remove("highlighted"); 
+      }
+    }
+  });
+}
+
+
+highlightCurrentCourse();
+setInterval(highlightCurrentCourse, 6000); 
+
+
+function getCourseTime(courseElement) {
+  const timeElement = courseElement.querySelector("p:nth-child(3)");
+  return timeElement ? timeElement.textContent.trim() : null;
+}
+
+highlightCurrentCourse();
+
+function showDetails(courseTitle) {
+  const courseDetails = document.getElementById("courseDetails");
+  const courseTitleElement = document.getElementById("courseTitle");
+  const courseDateElement = document.getElementById("courseDate");
+  const courseTimeElement = document.getElementById("courseTime");
+  const courseLocationElement = document.getElementById("courseLocation");
+
+  const details = getCourseDetails(courseTitle);
+
+  courseTitleElement.textContent = details.title;
+  courseDateElement.textContent = details.date;
+  courseTimeElement.textContent = details.time;
+  courseLocationElement.textContent = details.location;
+
+  courseDetails.classList.remove("hidden");
+}
+
+function getCourseDetails(courseTitle) {
+  const dynamicData = getDynamicDataForCourse(courseTitle);
+
+  return {
+    title: courseTitle,
+    date: dynamicData.date,
+    time: dynamicData.time,
+    location: dynamicData.location,
+  };
+}
+</script>
+<head>
+    
+    <title>Deniz Herrnreither - Social Media Modul</title>
+    
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylescurriculum.css">
+    <title>Timetable</title>
+    <h1>Timetable</h1>
+</header>
+<body>
+    <div class="container">
+        <div class="header">
+            <nav>
+              <h3>
+                <a href="aboutme.html">About Me</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="curriculum.html">Curriculum</a>
+                <a href="instagram_research.html">Instagram Research</a>
+                <a href="other_research.html">Other Research</a>
+              </h3>
+            </nav>
+        </div>
+        <div class="main-content">
+          
+            <div class="left-sidebar"></div>
+
+            <section class="section">
+            <div class="schedule">
+        <div class="course" onclick="showDetails('Farbe erkennen - malerische Bildfindung und Umsetzung (KuMM)')">
+          <h2>Farbe erkennen - malerische Bildfindung und Umsetzung (KuMM)</h2>
+          <p>16.10.2023 - 05.02.2024</p>
+          <p>15:00-18:00</p>
+          <p>1404 Leopoldstr. 13, H1</p>
+        </div>
+      </section>
+
+        <section class="section">
+        <div class="course">
+          <h2>Einführung in das digitale Gestalten (Gruppe 1)</h2>
+          <p>19.10.2023 - 08.02.2024</p>
+          <p>13:00-16:00</p>
+          <p>1401 Leopoldstr. 13, H1</p>
+        </div>
+      </section>
+
+
+      <section class="section">
+        <div class="course">
+          <h2>Digitale Medien</h2>
+          <p>20.10.2023 - 09.02.2024</p>
+          <p>10:00-13:00</p>
+          <p>B 106 Geschw.-Scholl-Pl. 1 (B)</p>
+        </div>
+      </section>
+
+
+        <section class="section">
+        <div class="course">
+          <h2>Medienkunst, Medientechnik, Medienkultur</h2>
+          <p>20.10.2023 - 09.02.2024</p>
+          <p>11:15 - 13:000</p>
+          <p>online</p>
+        </div>
+      </section>
+    
+      <section class="section">
+        <div class="course">
+          <h2>Grundlagen der Grafik: Form, Farbe, Typographie und Layout</h2>
+          <p>12.02.2024 - 16.02.2024</p>
+          <p>10:00-17:00</p>
+          <p>1401 Leopoldstr. 13, H1</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="course">
+          <h2>Grundlagen 2) der Grafik: Form, Farbe, Typographie und Layout</h2>
+          <p>12.02.2024 - 16.02.2024</p>
+          <p>10:00-17:00</p>
+          <p>1401 Leopoldstr. 13, H1</p>
+        </div>
+      </section>
+    
+      <section class="section">
+                <div class="course">
+           <h2>Einführung in die Programmierung und Softwarentwicklung</h2>
+           <p>12.02.2024 - 16.02.2024</p>
+           <p>14:00-16:00</p>
+           <p>1401 Thalkirchnerstr. 36 / Frauenlobstr. 7a, Vorlesungssaal 151H1</p>
+         </div>
+        </section>
+            
+        <section class="section">
+        <div class="course">
+          <h2>Social Media - Einführung in das Gestalten von Online-Medien</h2>
+          <p>17.10.2023 - 06.02.2024</p>
+          <p>16:00-19:00</p>
+          <p>1405 Leopoldstr. 13, H1</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="course">
+          <h2>Aktzeichnen - omitted</h2>
+          <p>12.02.2024 - 16.02.2024</p>
+          <p>10:00-17:00</p>
+          <p>1404 Leopoldstr. 13, H1</p>
+        </div>
+      </section>
+        
+      </style>
+    </head>
+  
+    <div class="footer2">
+      <div>
+        <h7>
+          </h7>
+      </div>
+      <div class="footer2">
+        <div>
+          <h7>
+            </h7>
+        </div>
+    <div class="footer2">
+      <div>
+        <h7>
+          </h7>
+      </div>
+
+    <body>
+      <header><strong>tabular timetable</strong></header>
+      <div>
+        <p class="my-class"></p>
+        <table>
+          <tr>
+            <td>&nbsp;</td>
+            <th style="background-color: rgb(240, 160, 216);">Mon</th>
+            <th style="background-color: rgb(231, 128, 11);">Tues</th>
+            <th style="background-color: rgb(240, 160, 216);">Wed</th>
+            <th style="background-color: rgb(231, 128, 11);">Thurs</th>
+            <th style="background-color: rgb(240, 160, 216);">Fri</th>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(240, 160, 216);">10am - 11am</th>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(198, 153, 250);">
+              <a href="https://www.medien.ifi.lmu.de/lehre/ws2122/dm/">DM Übung</a> 
+            </td>
+            <td style="background-color: rgb(123, 201, 113);">
+              <a href="https://www.mmi.ifi.lmu.de/lehre/ws2324/eipnf/">EiPNf Übung</a>
+            </td>
+            <td style="background-color: rgb(170, 111, 238);">
+              <a href="https://www.medien.ifi.lmu.de/lehre/ws2122/dm/">DM Vorlesung</a> 
+            </td>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(231, 128, 11);">11am - 12pm</th>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(198, 153, 250);">
+              <a href="https://www.medien.ifi.lmu.de/lehre/ws2122/dm/">DM Übung</a> 
+            </td>
+            <td style="background-color: rgb(123, 201, 113);">
+              <a href="https://www.mmi.ifi.lmu.de/lehre/ws2324/eipnf/">EiPNf Übung</a>
+            </td>
+            <td style="background-color: rgb(170, 111, 238);">
+              <a href="https://www.medien.ifi.lmu.de/lehre/ws2122/dm/">DM Vorlesung</a> 
+            </td>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(240, 160, 216);">12pm - 1pm</th>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(71, 207, 241);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Medienkunst, -kultur und -technik</a>
+            </td>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(170, 111, 238);">
+              <a href="https://www.medien.ifi.lmu.de/lehre/ws2122/dm/">DM Vorlesung</a> 
+            </td>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(231, 128, 11);">1pm - 2pm</th>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(71, 207, 241);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Medienkunst, -kultur und -technik</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(240, 160, 216);">2pm - 3pm</th>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(75, 189, 135);">
+              <a href="https://www.mmi.ifi.lmu.de/lehre/ws2324/eipnf/">EiPNf Vorlesung</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(231, 128, 11);">3pm - 4pm</th>
+            <td style="background-color: rgb(9, 247, 255);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Farbe bekennen</a>
+            </td>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(75, 189, 135);">
+              <a href="https://www.mmi.ifi.lmu.de/lehre/ws2324/eipnf/">EiPNf Vorlesung</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(240, 160, 216);">4pm - 5pm</th>
+            <td style="background-color: rgb(9, 247, 255);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Farbe bekennen</a>
+            </td>
+            <td style="background-color: rgb(240, 84, 45);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Social Media</a>
+            </td>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(238, 200, 31);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Digitale Medien</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(231, 128, 11);">5pm - 6pm</th>
+            <td style="background-color: rgb(9, 247, 255);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Farbe bekennen</a>
+            </td>
+            <td style="background-color: rgb(240, 84, 45);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Social Media</a>
+            </td>
+            <td>&nbsp;</td>
+  
+            <td style="background-color: rgb(238, 200, 31);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Digitale Medien</a>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(240, 160, 216);">6pm - 7pm</th>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(240, 84, 45);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Social Media</a>
+            </td>
+            <td>&nbsp;</td>
+            <td style="background-color: rgb(238, 200, 31);">
+              <a href="https://www.kunstpaedagogik.uni-muenchen.de/studiengaenge/bachelor/bachelor_kumm/studium_moduluebersicht/mhb-ba_km_2019.pdf">Digitale Medien</a>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <th style="background-color: rgb(231, 128, 11);">7pm - 8pm</th>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          
+        </table>
+      </div>
+
+      </div>
+      <div class="right-sidebar"></div>
+    </div>
+
+    
+    <div class="footer">
+      <div>
+        <h6>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/LMU_Muenchen_Logo.svg/2560px-LMU_Muenchen_Logo.svg.png" alt="LMU München Logo">
+      </h6>
+      </div>
+  </div>
+  </div>
+</body>
+</html>
+
+

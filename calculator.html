@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deniz Herrnreither - Social Media Modul</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            background: #f5f5f5 url('https://i.makeagif.com/media/7-12-2022/5j1gUS.gif');
+            background-size: cover;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+
+        nav {
+            background-color: #555;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        
+        .section {
+            margin: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s;      }
+
+        .fade-out {
+            opacity: 0.2;   }
+
+        .section:not(.fade-out) h2 {
+            color: #333;        transition: color 0.5s;     }
+
+        .section:not(.fade-out):hover h2 {
+            color: #00f;       }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+            font-size: medium;
+            font-size: x-large;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function handleScroll() {
+                document.querySelectorAll('.section').forEach(function(section) {
+                       if (isElementInViewport(section)) {
+                        section.classList.remove('fade-out');              } else {
+                        section.classList.add('fade-out');          }
+                });
+            }
+
+             function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                );
+            }
+   window.addEventListener('scroll', handleScroll);
+
+             handleScroll();
+        });
+    </script>
+    
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    
+    <body>
+        <header>
+            <h1>Programming of a calculator</h1>
+        </header>
+    
+        <nav>
+            <a href="aboutme.html">About Me</a>
+            <a href="calculator.html">Calculator</a>
+            <a href="curriculum.html">Curriculum</a>
+            <a href="instagram_research.html">Instagram Research</a>
+            <a href="other_research.html">Other Research</a>
+        </nav>
+    
+        <div class="section">
+            <h2>Simple Calculator</h2>
+    
+            <div>
+              <ul>
+                <li><label for="number1">Number 1:</label>
+                <input type="number" id="number1" placeholder="Enter a number" />
+              </li>
+            </ul>
+              </div>
+    
+            <div>
+              <ul>
+                <li>
+                <label for="number2">Number 2:</label>
+                <input type="number" id="number2" placeholder="Enter a number" />
+              </li>
+            </ul>
+              </div>
+    
+            <div>
+              <ul>
+                <li>
+                <label for="number3">Number 3:</label>
+                <input type="number" id="number3" placeholder="Enter a number" />
+              </li>
+            </ul>
+              </div>
+    
+            <div class="operation">
+              <ul>
+                <li>
+                <label>Operation:</label>
+                <input type="radio" name="operation" value="add" />Add
+                <input type="radio" name="operation" value="subtract" />Subtract
+                <input type="radio" name="operation" value="multiply" />Multiply
+                <input type="radio" name="operation" value="divide" />Divide
+              </li>
+            </ul>
+              </div>
+    
+            <button id="calculateButton">Calculate</button>
+    
+            <p id="result"></p>
+        </div>
+    
+        <script src="./index.js"></script>
+        <script>
+            function calculate() {
+  // Get input values and operation
+  var num1 = parseFloat(document.getElementById("number1").value);
+  var num2 = parseFloat(document.getElementById("number2").value);
+  var num3 = parseFloat(document.getElementById("number3").value);
+  var operation = document.querySelector('input[name="operation"]:checked');
+
+  if (operation === null) {
+    document.getElementById("result").innerHTML = "Please select the operation";
+    return;
+  }
+
+  // Perform calculation based on the selected operation
+  var result;
+  switch (operation.value) {
+    case "add":
+      result = add(num1, num2, num3);
+      break;
+    case "subtract":
+      result = subtract(num1, num2, num3);
+      break;
+    case "multiply":
+      result = multiply(num1, num2, num3);
+      break;
+    case "divide":
+      result = divide(num1, num2, num3);
+      break;
+    default:
+      result = "Invalid operation";
+  }
+
+  // Display the result
+  document.getElementById("result").innerHTML = "Result: " + result;
+}
+
+// Functions for each operation
+function add(a, b, c) {
+  return a + b + c;
+}
+
+function subtract(a, b, c) {
+  return a - b - c;
+}
+
+function multiply(a, b, c) {
+  return a * b * c;
+}
+
+function divide(a, b, c) {
+  if (b !== 0 && c !== 0) {
+    return a / b / c;
+  } else {
+    return "Cannot divide by zero";
+  }
+}
+
+document.getElementById("calculateButton").addEventListener("click", calculate);
+
+        </script>
+    </body>
+    
+    </html>
+  
+    
+
+    

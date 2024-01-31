@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deniz Herrnreither - Social Media Modul</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            color: #333;
+            text-shadow: #333;
+            text-shadow: 40px;
+            text-rendering: auto;
+            background: #f5f5f5 url('https://cdn.dribbble.com/users/2158347/screenshots/6041012/gareso_socialmedia_01_dribble.gif');
+            background-size: cover;
+            background-position: center; 
+            background-blend-mode:color-burn;
+            
+        }
+
+        header {
+            background-color: #8400ff;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            text-shadow: #333;
+            text-shadow: 40px;
+            text-rendering: auto;
+        }
+
+        nav {
+            background-color: #ff0095;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .section {
+            margin: 40px;
+            background-color: rgba(222);
+            padding: 50px;
+            border-radius: 18px;
+            box-shadow: 0 0 12px rgb(0, 0, 0);
+            text-shadow: #4b4b4b;
+            text-shadow: 40px;
+            text-rendering: auto;
+            box-shadow: 20px;
+            transition: opacity 0.20s;     }
+
+
+        .fade-out {
+            opacity: 0.4;    }
+
+        h2 {
+            color: #333;
+            text-shadow: #333;
+            text-shadow: 40px;
+            text-rendering: auto;
+        }
+
+        h6{
+            max-width: 400px;
+            max-height: 350px;
+            align-content: center;
+            margin-left: 20px;
+        }
+
+        h7{
+            max-width: 400px;
+            max-height: 350px;
+            align-content: center;
+            margin-right: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0px;
+            min-height: fit-content;
+            font-size: large;
+            font-size-adjust: initial;
+            text-shadow: #333;
+            text-shadow: 40px;
+            text-rendering: auto;
+
+        }
+
+        li {
+            margin-bottom: 5px;
+            box-shadow: #333;
+            box-shadow: inset;
+            box-shadow: 30px;
+            
+        }
+
+
+        .instagram-logo {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: url('instagram-logo.png') no-repeat;
+            background-size: contain;
+        }
+    </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function handleScroll() {
+            document.querySelectorAll('.section').forEach(function(section) {
+                    if (isElementInViewport(section)) {
+                    section.classList.remove('fade-out');      } else {
+                    section.classList.add('fade-out');    }
+            });
+        }
+  function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+            );
+        }
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+    });
+</script>
+    <title>Deniz Herrnreither - Social Media Modul</title>
+</head>
+<body>
+    <div class="instagram-logo">
+        <a href="https://www.instagram.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="insta logo" height="30" width="30"> <!-- Beachte die Änderung hier -->
+        </a>
+    </div>
+    
+    <header>
+        <h1>Research about Instagram</h1>
+    </header>
+
+    <nav>
+        <a href="aboutme.html">About Me</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="instagram_research.html">Instagram Research</a>
+        <a href="other_research.html">Other Research</a>
+    </nav>
+
+    <section class="section">
+        <h2>a couple of definitions in connection with Instagram</h2>
+        <ul>
+            <li><strong>UI and Experience Design:</strong> always adjusting to new trends...</li>
+            <li>these are often seen in the most popular Social Media Plattforms like Instagram. For instance stories, reels, the explore page or comments under your favorite Infulencer. Even your specific, personalized Algorithm is included.
+            </li>           
+        </ul>
+    </section>
+
+    <section class="section">
+        <ul>
+            <li><strong>Features and functionalities:</strong> </li>
+            <li> all your favorite functions are included. Like, comments, tags, live Videos, professional brands and small shops, Chatrooms, personalized content and the list goes on and on... Meta (Instagram's owner) really understood how to keep the userbase entertained.</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <ul>
+            <li><strong>User demographics:</strong> </li>
+            <li> at first just the young people enjoyed Instagram. Now nearly everyone uses it or at least heard of it. Especially after Facebook's big data leaks. </li>
+            <div>
+            </div>
+        </ul>
+    </section>
+
+    <section class="section">
+        <ul>
+            <li><strong>Monetazion strategies:</strong> </li>
+            <li> Influencers and Brand Advertisements are known assets for Meta. Verification Marks are an usefull tool too. </li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <ul>
+            <li><strong>Privacy and Security measures:</strong> </li>
+            <li> The User is free to choose between a lot of tools for a secure and private Instagram adventure. The options to report, block, delete comments are given by Meta. But not enough. The concern developed the 2-factor Authentificator, community guidelines and the option to use a private account. The number of bots, hacked accounts and the loss of data privacy are contrary to Metas actions still high and still widely around.</li>
+            <div>
+            </div>
+        </ul>
+
+    </section>
+    <section class="section">
+        <ul>
+            <li><strong>Recent updates and innovations:</strong> </li>
+            <li> paid premium content, shared posts, notes threads and an brodcast channel are some examples of instagrams new features. </li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <ul>
+            <li><strong>REQUEST Types and Domain/ Endpoints </strong> </li>
+            <li>Analyzing the network activity on Instagram using browser developer tools unveils different types of requests, including GET (utilized for retrieving data), POST (employed for submitting data), DELETE (used for content removal), and PUT (applied for content updates). These requests fulfill specific functions, such as loading the feed (GET), sending messages (POST), removing posts (DELETE), and adjusting profile information (PUT). A thorough examination of the associated endpoints (URLs) provides an insightful perspective on how these HTTP methods are utilized to support diverse functionalities within the Instagram social network.</li></ul>
+    </section>
+
+    <section class="section">
+        <ul>
+            <li><strong>every online plattform needs developers and software engeneers to constantly improve the software. Lets have a look into that...</strong> </li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <ul>
+            <li><strong>Instagram´s API:</strong> </li>
+            <li><strong>- but whats an API?:</strong> </li>
+            <li> An API allows developers and software engeneers to have access to the Data of a specific website or application. </li>
+        </ul>
+        <ul>
+            <li> <strong> 
+            ... here are some Methods to describe Instagrams´s API: These are called HTTP Methods...</strong></li>
+         
+        </ul>
+    </section>
+    
+
+    <section class="section">
+        <ul>
+            <li><strong>Conclusion
+            </strong> </li>
+            <li>Instagram's dynamic UI/UX design adapts to trends with features like stories and reels. Driven by a sophisticated algorithm, it ensures a personalized experience. The platform offers diverse functionalities, including likes, comments, DMs, live streams, and business support. Initially targeting the young, Instagram now caters to a broader audience, employing monetization through influencers, ads, and verified accounts. Privacy measures include reporting, blocking, and two-factor authentication. Recent updates focus on collaboration with shared posts, notes, and premium content, expanding user engagement options.</li>
+        </ul>
+    </section>
+
+
+
+
+</body>
+</html>
